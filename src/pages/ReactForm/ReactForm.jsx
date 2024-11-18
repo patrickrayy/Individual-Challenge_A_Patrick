@@ -8,7 +8,7 @@ const ReactForm = () => {
   });
   const [tableData, setTableData] = useState([]);
 
-  // Handle form input changes
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -17,16 +17,16 @@ const ReactForm = () => {
     }));
   };
 
-  // Handle form submission
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setTableData((prevData) => [...prevData, formData]);
-    setFormData({ name: '', email: '', age: '' }); // Reset form after submit
+    setFormData({ name: '', email: '', age: '' }); 
   };
 
-  // Handle form reset
+
   const handleReset = () => {
-    setFormData({ name: '', email: '', age: '' }); // Clear form data
+    setFormData({ name: '', email: '', age: '' }); 
   };
 
   return (

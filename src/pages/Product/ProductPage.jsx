@@ -5,19 +5,18 @@ import Navbar from '../../components/Navbar/Navbar';
 import RadioButton from '../../components/RadioButton/RadioButton';
 
 export default function ProductPage() {
-  const [products, setProducts] = useState([]); // Full product list
-  const [filteredProducts, setFilteredProducts] = useState([]); // Filtered product list
-  const [selectedCategory, setSelectedCategory] = useState('all'); // Selected category
-  const [searchTerm, setSearchTerm] = useState(''); // Search term
+  const [products, setProducts] = useState([]); 
+  const [filteredProducts, setFilteredProducts] = useState([]); 
+  const [selectedCategory, setSelectedCategory] = useState('all'); 
+  const [searchTerm, setSearchTerm] = useState(''); 
 
-  // Fetch all products when the component mounts
+
   useEffect(() => {
     const allProducts = getAllProducts();
     setProducts(allProducts);
-    setFilteredProducts(allProducts); // Default to all products
+    setFilteredProducts(allProducts); 
   }, []);
 
-  // Filter products based on selected category and search term
   useEffect(() => {
     const filtered = products.filter((product) => {
       const matchesCategory =
@@ -27,7 +26,7 @@ export default function ProductPage() {
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
 
-      return matchesCategory && matchesSearch; // Must match both filters
+      return matchesCategory && matchesSearch; 
     });
     setFilteredProducts(filtered);
   }, [selectedCategory, searchTerm, products]);
@@ -40,7 +39,6 @@ export default function ProductPage() {
 
   return (
     <>
-      {/* Pass searchTerm and setSearchTerm to Navbar */}
       <Navbar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <div className="px-24 py-4">
         <div className="font-poppins">
@@ -49,7 +47,7 @@ export default function ProductPage() {
             <RadioButton
               options={RadioButtonOpts}
               defaultValue="all"
-              onChange={(value) => setSelectedCategory(value)} // Update category
+              onChange={(value) => setSelectedCategory(value)} 
             />
           </div>
         </div>
